@@ -15,6 +15,9 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - run: |
+          echo $SSH_AUTH_SOCK
+
       - name: Setup Node.js 14.x
         uses: actions/setup-node@v1
         with:
