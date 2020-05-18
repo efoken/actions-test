@@ -15,9 +15,6 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - run: |
-          echo $SSH_AUTH_SOCK
-
       - name: Setup Node.js 14.x
         uses: actions/setup-node@v1
         with:
@@ -35,6 +32,8 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
+          echo $SSH_AUTH_SOCK
+          ssh -T deploy@artwithaliens.com
           eval "$(ssh-agent -s)"
           echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
           yarn install --frozen-lockfile
