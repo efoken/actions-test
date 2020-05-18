@@ -1,0 +1,11 @@
+{
+  "name": "actions-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Eike Foken <eike.foken@aperto.com>",
+  "license": "MIT",
+  "dependencies": {
+    "shipit-cli": "^5.3.0",
+    "shipit-deploy": "^5.3.0"
+  }
+}
