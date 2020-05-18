@@ -33,7 +33,8 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           echo $SSH_AUTH_SOCK
-          ssh -T deploy@artwithaliens.com
+          echo "$SSH_PRIVATE_KEY" | tr -d '\r' > artwithaliens.key
+          ssh -i artwithaliens.key -T deploy@artwithaliens.com
           eval "$(ssh-agent -s)"
           echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
           yarn install --frozen-lockfile
