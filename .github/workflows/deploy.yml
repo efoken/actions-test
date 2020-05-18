@@ -16,7 +16,7 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Test SSH connection
-        run: ssh -T deploy@artwithaliens.com
+        run: ssh -o StrictHostKeyChecking=no -T deploy@artwithaliens.com
 
       - name: Setup Node.js 14.x
         uses: actions/setup-node@v1
